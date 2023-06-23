@@ -6,7 +6,6 @@ _Requirements_:
 
 - Openpyxl
 - pydub
-- time
 
 ## How to use
 
