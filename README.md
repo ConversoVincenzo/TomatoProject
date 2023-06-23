@@ -15,3 +15,7 @@ _Requirements_:
 >n.b do not move the files in the directory
 
 At the end of the program you will have file "result+timestamp+.xlsx" in the files directory with your results.
+
+ATTENTION!
+
+The sound for the Timer may be too loud.

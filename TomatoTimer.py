@@ -12,10 +12,6 @@ slotsNum = sheet.max_column
 row = sheet.max_row
 toDoList = []
 
-def set_loudness(sound, target_dBFS):
-    loudness_difference = target_dBFS - sound.dBFS
-    return sound.apply_gain(loudness_difference)
-
 #To do list setup
 for col in range(slotsNum):
     quarter = []
@@ -38,9 +34,10 @@ sheet["A1"] = "Slots"
 sheet["B1"] = "In Time?"
 
 sound = AudioSegment.from_wav('.\\audiofile.wav')
-quiet_sound = set_loudness(sound, target_dBFS=-20)
 
-play(quiet_sound)
+input("ATTENTION! The sound for the timer may be to loud, control your mixer than press [Enter] to listen the sound. ")
+
+play(sound)
 
 for slot in range(len(toDoList)):
     print("For this slot you need to " + str(toDoList[slot]) + "\n")
@@ -48,15 +45,13 @@ for slot in range(len(toDoList)):
     print("GL HF!")
     time.sleep(minutes * 60)
     print("Ding!!!")
-    play(quiet_sound)
-    stat = input("Did you do it on time? Y or N: ")
+    play(sound)
+    stat = input("Did you do it on time? Y or N: ").upper()
     while stat != "Y" and stat != "N":
         stat = input("Bro be serious please. Y or N: ")
     sheet.cell(row=slot + 1, column=1).value = str(toDoList[slot])
     sheet.cell(row=slot + 1, column=2).value = stat
     print("time to touch some grass, come back after 5 minutes")
-    if 1:
-        break
     time.sleep(5 * 60)
 
 current_GMT = time.gmtime()
