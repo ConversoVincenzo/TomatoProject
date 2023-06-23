@@ -52,7 +52,12 @@ for slot in range(len(toDoList)):
     sheet.cell(row=slot + 1, column=1).value = str(toDoList[slot])
     sheet.cell(row=slot + 1, column=2).value = stat
     print("time to touch some grass, come back after 5 minutes")
-    time.sleep(5 * 60)
+    if slot%3 == 1:
+        print("time to touch some grass, come back after 15 minutes")
+        time.sleep(15 * 60)
+    else:
+        print("time to touch some grass, come back after 5 minutes")
+        time.sleep(5 * 60)
 
 current_GMT = time.gmtime()
 
