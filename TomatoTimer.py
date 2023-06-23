@@ -4,7 +4,7 @@ import time
 from pydub import AudioSegment
 from pydub.playback import play
 
-path = ".\work_load.xlsx"
+path = "work_load.xlsx"
 
 workload = load_workbook(path)
 sheet = workload.active
@@ -51,7 +51,6 @@ for slot in range(len(toDoList)):
         stat = input("Bro be serious please. Y or N: ")
     sheet.cell(row=slot + 1, column=1).value = str(toDoList[slot])
     sheet.cell(row=slot + 1, column=2).value = stat
-    print("time to touch some grass, come back after 5 minutes")
     if slot%3 == 1:
         print("time to touch some grass, come back after 15 minutes")
         time.sleep(15 * 60)
@@ -59,8 +58,11 @@ for slot in range(len(toDoList)):
         print("time to touch some grass, come back after 5 minutes")
         time.sleep(5 * 60)
 
+
+print("Ending session ...")
+
 current_GMT = time.gmtime()
 
 time_stamp = calendar.timegm(current_GMT)
 
-result.save(".\\files/result" + str(time_stamp) + ".xlsx")
+result.save("files/result" + str(time_stamp) + ".xlsx")
